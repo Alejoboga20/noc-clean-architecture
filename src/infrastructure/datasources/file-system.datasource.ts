@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { LogDataSource } from '../../domain/datasources/log.datasource';
-import { LogEntity } from '../../domain/entities/log.entity';
+import { LogEntity, LogSeverityLevel } from '../../domain/entities/log.entity';
 
 export class FileSystemDatasource implements LogDataSource {
 	private readonly logPath = 'logs/';
@@ -26,8 +26,22 @@ export class FileSystemDatasource implements LogDataSource {
 		});
 	};
 
-	async saveLog(log: any): Promise<void> {
-		console.log('Saving log to file system:', log);
+	async saveLog(newLog: LogEntity): Promise<void> {
+		const logAsJson = `${JSON.stringify(newLog)}\n`;
+
+		fs.appendFileSync(this.lowLogsPath, logAsJson);
+
+		if (newLog.level === LogSeverityLevel.LOW) return;
+
+		if (newLog.level === LogSeverityLevel.MEDIUM) {
+			fs.appendFileSync(this.mediuLogsPath, logAsJson);
+			return;
+		}
+
+		if (newLog.level === LogSeverityLevel.HIGH) {
+			fs.appendFileSync(this.highLogsPath, logAsJson);
+			return;
+		}
 	}
 
 	async getLogs(severityLevel: any): Promise<LogEntity[]> {
