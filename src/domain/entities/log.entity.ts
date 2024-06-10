@@ -9,7 +9,7 @@ export class LogEntity {
 	public message: string;
 	public createdAt: Date;
 
-	constructor(message: string, level: LogSeverityLevel, createdAt: Date) {
+	constructor(message: string, level: LogSeverityLevel, createdAt?: Date) {
 		this.level = level;
 		this.message = message;
 		this.createdAt = new Date();
