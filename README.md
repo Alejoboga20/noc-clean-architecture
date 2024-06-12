@@ -6,7 +6,7 @@ This app was created to learn clean artchitecture and to monitor and alert the n
 
 1. Clone the repository
 2. Install the dependencies
-3. Create .env file with the necessary information provided in the .env.template file
+3. Create `.env` file with the necessary information provided in the `.env.template` file
 
 ```bash
 npm install
