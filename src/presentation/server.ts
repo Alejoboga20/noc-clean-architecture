@@ -13,14 +13,7 @@ export class Server {
 
 		const emailService = new EmailService();
 
-		emailService.sendMail({
-			to: 'alejo@zelta.ai',
-			subject: 'Server started',
-			htmlBody: `
-      <h3>Server started</h3>
-      <p>Server started at ${new Date().toISOString()}</p>
-      `,
-		});
+		emailService.sendEmailWithFileSystemLogs('alejo@zelta.ai');
 
 		const job = CronService.createJob('*/5 * * * * *', () =>
 			new CheckService(

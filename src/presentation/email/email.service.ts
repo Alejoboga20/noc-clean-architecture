@@ -2,11 +2,34 @@ import nodemailer from 'nodemailer';
 import { envs } from '../../config/plugins/envs.plugin';
 
 interface SendMailOptions {
-	to: string;
+	to: string | string[];
 	subject: string;
 	htmlBody: string;
-	// attachments: any[];
+	attachments?: Attachment[];
 }
+
+interface Attachment {
+	filename: string;
+	path: string;
+}
+
+const SUBJECT = 'Logs from the file system';
+const HTML_BODY = 'Please find the logs attached to this email';
+
+const ATTACHMENTS: Attachment[] = [
+	{
+		filename: 'high-logs.json',
+		path: './logs/high-logs.json',
+	},
+	{
+		filename: 'low-logs.json',
+		path: './logs/low-logs.json',
+	},
+	{
+		filename: 'medium-logs.json',
+		path: './logs/medium-logs.json',
+	},
+];
 
 export class EmailService {
 	private transporter = nodemailer.createTransport({
@@ -18,13 +41,15 @@ export class EmailService {
 	});
 
 	async sendMail(options: SendMailOptions): Promise<boolean> {
-		const { to, subject, htmlBody } = options;
+		const { to, subject, htmlBody, attachments = [] } = options;
+
 		try {
 			const sentInformation = await this.transporter.sendMail({
 				to,
 				subject,
 				html: htmlBody,
 				from: envs.MAILER_MAIL,
+				attachments,
 			});
 
 			console.log({ sentInformation });
@@ -32,5 +57,14 @@ export class EmailService {
 		} catch (error) {
 			return false;
 		}
+	}
+
+	async sendEmailWithFileSystemLogs(to: string | string[]) {
+		await this.sendMail({
+			to,
+			subject: SUBJECT,
+			htmlBody: HTML_BODY,
+			attachments: ATTACHMENTS,
+		});
 	}
 }

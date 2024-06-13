@@ -1,5 +1,5 @@
 {
-	"level": "high",
+	"level": "medium",
 	"message": "Service https://www.google.com is up and running",
 	"createdAt": "2024-06-13T15:07:35.110Z",
 	"origin": "check-service.ts"
