@@ -11,8 +11,7 @@ export class Server {
 		console.log('Server started...');
 		const url = 'https://www.google.com';
 
-		const emailService = new EmailService();
-
+		const emailService = new EmailService(fileSystemRepository);
 		emailService.sendEmailWithFileSystemLogs('alejo@zelta.ai');
 
 		const job = CronService.createJob('*/5 * * * * *', () =>
