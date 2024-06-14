@@ -14,7 +14,7 @@ export class Server {
 		const url = 'https://www.google.com';
 
 		const sendEmail = new SendEmailLogs(emailService, fileSystemRepository);
-		sendEmail.execute('alejo@zelta.ai');
+		// sendEmail.execute('alejo@zelta.ai');
 
 		const job = CronService.createJob('*/5 * * * * *', () =>
 			new CheckService(
