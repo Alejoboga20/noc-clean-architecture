@@ -27,6 +27,7 @@ export class LogEntity {
 	}
 
 	static fromJson(json: string): LogEntity {
+		json = json || '{}';
 		const { message, level, createdAt, origin } = JSON.parse(json);
 		/* Include validations here, we can use zod */
 		const logEntity = new LogEntity({ message, level, createdAt, origin });
