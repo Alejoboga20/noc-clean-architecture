@@ -12,7 +12,13 @@ This app was created to learn clean artchitecture and to monitor and alert the n
 npm install
 ```
 
-4. Run the app
+4. Start mongodb container
+
+```bash
+docker-compose up -d
+```
+
+5. Run the app
 
 ```bash
 npm run dev

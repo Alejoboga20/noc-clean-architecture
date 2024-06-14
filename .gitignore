@@ -5,3 +5,6 @@ DS_Store
 
 # environment file
 .env
+
+# mongo data
+mongo/
