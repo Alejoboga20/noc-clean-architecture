@@ -11,3 +11,6 @@ logs/
 
 # mongo data
 mongo-data/
+
+# postgres data
+postgres-data/

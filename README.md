@@ -12,7 +12,7 @@ This app was created to learn clean artchitecture and to monitor and alert the n
 npm install
 ```
 
-4. Start mongodb container
+4. Start mongodb container or postgres container
 
 ```bash
 docker-compose up -d
