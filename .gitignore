@@ -6,5 +6,8 @@ DS_Store
 # environment file
 .env
 
+# logs data
+logs/
+
 # mongo data
 mongo-data/
