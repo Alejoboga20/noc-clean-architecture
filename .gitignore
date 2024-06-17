@@ -5,12 +5,18 @@ DS_Store
 
 # environment file
 .env
+.env.test
 
 # logs data
 logs/
 
 # mongo data
 mongo-data/
+mongo-data-test/
 
 # postgres data
 postgres-data/
+postgres-data-test/
+
+# test
+coverage/
