@@ -29,6 +29,8 @@ describe('Log Model tests', () => {
 				...logData,
 			})
 		);
+
+		await LogModel.findByIdAndDelete(log._id);
 	});
 
 	test('should return the schmea object', () => {
