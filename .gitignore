@@ -9,6 +9,7 @@ DS_Store
 
 # logs data
 logs/
+logs
 
 # mongo data
 mongo-data/
