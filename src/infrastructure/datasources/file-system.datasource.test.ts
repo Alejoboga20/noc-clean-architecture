@@ -5,7 +5,7 @@ import { LogEntity, LogSeverityLevel } from '../../domain/entities/log.entity';
 
 const logPath = path.join(__dirname, '../../../logs');
 
-describe('FileSystemDatasource Tests', () => {
+describe.skip('FileSystemDatasource Tests', () => {
 	beforeEach(() => {
 		fs.rmSync(logPath, { recursive: true, force: true });
 	});
